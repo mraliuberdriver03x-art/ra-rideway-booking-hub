@@ -5,6 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RA Rideway Private Hire</title>
 <style>
+body {
+  background: #090909;
+  background-image:
+    radial-gradient(circle at 20% 30%, #d4af3755, transparent 45%),
+    radial-gradient(circle at 80% 70%, #d4af3744, transparent 45%);
+  background-size: 200% 200%;
+  animation: goldGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes goldGlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
 #booking {
   padding: 25px 20px;
 }
