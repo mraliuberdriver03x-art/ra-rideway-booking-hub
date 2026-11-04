@@ -181,6 +181,38 @@ a { color:inherit; }
 <footer>
   RA RIDEWAY PRIVATE HIRE<br>
   Ride • Travel • Arrive in Style
-</footer>
-</body>
+</footer> 
+  <style>
+/* Moving electric-blue thunder */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 45%,
+      rgba(0, 100, 255, 0.28),
+      transparent 55%);
+  animation: thunderMove 5s ease-in-out infinite alternate;
+}
+
+@keyframes thunderMove {
+  0% {
+    opacity: 0.2;
+    transform: translateX(-25%);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateX(25%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
+  </style>
+</body>   
 </html>
