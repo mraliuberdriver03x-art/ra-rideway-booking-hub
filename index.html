@@ -118,6 +118,26 @@ a { color:inherit; }
   <a class="button" href="tel:07403816343">CALL RA RIDEWAY</a>
 </section>
 
+<section id="booking" style="background:#111; color:white; padding:30px 20px; text-align:center;">
+  <h2 style="color:#d4af37;">Book Your Ride</h2>
+  <form onsubmit="event.preventDefault(); alert('Booking form preview only. Online booking is not connected yet.');" style="max-width:450px; margin:auto; display:grid; gap:15px;">
+    <input type="text" placeholder="Your Full Name" aria-label="Full name" required>
+    <input type="tel" placeholder="Phone Number" aria-label="Phone number" required>
+    <input type="text" placeholder="Pickup Location" aria-label="Pickup location" required>
+    <input type="text" placeholder="Destination" aria-label="Destination" required>
+    <input type="date" aria-label="Journey date" required>
+    <input type="time" aria-label="Journey time" required>
+    <select aria-label="Vehicle type" required>
+      <option value="">Choose Vehicle</option>
+      <option>Standard Travel</option>
+      <option>Executive Travel</option>
+    </select>
+    <button type="submit" style="background:#d4af37; color:black; padding:15px; border:0; border-radius:8px; font-weight:bold;">
+      Request Booking
+    </button>
+  </form>
+</section>
+
 <footer>
   RA RIDEWAY PRIVATE HIRE<br>
   Ride • Travel • Arrive in Style
