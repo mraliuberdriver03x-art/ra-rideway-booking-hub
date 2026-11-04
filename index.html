@@ -290,5 +290,876 @@ body::before {
   <p>Cancellation enquiries: 07403 816343.</p>
 </section>
 
+<!-- RA RIDEWAY VIP DRIVER AREA -->
+<style>
+  #ra-vip {
+    color: #f6e8bf;
+    background: linear-gradient(145deg,#080808,#19140b,#080808);
+    border: 1px solid #b99343;
+    border-radius: 20px;
+    padding: 24px 18px;
+    margin: 30px auto;
+    max-width: 780px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 35px #b9934326;
+  }
+  #ra-vip * { box-sizing: border-box; }
+  #ra-vip h2, #ra-vip h3 {
+    color: #e8c777;
+    text-align: center;
+  }
+  #ra-vip .ra-subtitle {
+    text-align: center;
+    color: #c6b88f;
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+  #ra-vip .ra-card {
+    background: linear-gradient(145deg,#171717,#242016);
+    border: 1px solid #80672f;
+    border-radius: 15px;
+    padding: 18px;
+    margin-top: 18px;
+  }
+  #ra-vip .ra-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #504329;
+    font-size: 14px;
+  }
+  #ra-vip .ra-line span { color: #c9bda2; }
+  #ra-vip .ra-line strong {
+    text-align: right;
+    color: white;
+  }
+  #ra-vip .ra-earnings {
+    text-align: center;
+    margin: 22px 0;
+    padding: 20px;
+    border: 1px solid #cda951;
+    border-radius: 12px;
+  }
+  #ra-vip .ra-earnings small {
+    display: block;
+    color: #e4c879;
+    letter-spacing: 2px;
+  }
+  #ra-vip .ra-earnings b {
+    display: block;
+    font-size: 38px;
+    margin-top: 10px;
+    color: #f7d77c;
+  }
+  #ra-vip .ra-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  #ra-vip button, #ra-vip .ra-apply {
+    flex: 1;
+    min-width: 125px;
+    padding: 14px;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  #ra-vip .ra-gold {
+    background: linear-gradient(110deg,#997125,#f6d889,#a77b28);
+    color: #080808;
+    border: 0;
+  }
+  #ra-vip .ra-dark {
+    background: #171717;
+    color: #e8c777;
+    border: 1px solid #b99343;
+  }
+  #ra-vip .ra-waybill { display: none; }
+  #ra-vip .ra-status {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+    color: #e8c777;
+  }
+  #ra-vip .ra-note {
+    color: #aaa;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.6;
+  }
+</style>
+
+<section id="ra-vip">
+  <p class="ra-subtitle">PRIVATE HIRE · PREMIUM SERVICE</p>
+  <h2>✦ RA RIDEWAY ✦</h2>
+  <p class="ra-subtitle">VIP DRIVER PORTAL — DEMONSTRATION</p>
+
+  <div class="ra-card">
+    <h3>New VIP Job Offer</h3>
+
+    <div class="ra-line">
+      <span>Booking reference</span>
+      <strong>RA-DEMO-1001</strong>
+    </div>
+    <div class="ra-line">
+      <span>Pickup</span>
+      <strong>Sheffield</strong>
+    </div>
+    <div class="ra-line">
+      <span>Destination</span>
+      <strong>Manchester</strong>
+    </div>
+    <div class="ra-line">
+      <span>Pickup time</span>
+      <strong>10:30 AM (Example)</strong>
+    </div>
+    <div class="ra-line">
+      <span>Journey type</span>
+      <strong>Pre-booked</strong>
+    </div>
+
+    <div class="ra-earnings">
+      <small>YOUR JOB EARNINGS</small>
+      <b>£49.50</b>
+    </div>
+
+    <div class="ra-buttons">
+      <button type="button" class="ra-gold"
+        onclick="raAcceptDemo()">ACCEPT JOB</button>
+      <button type="button" class="ra-dark"
+        onclick="raRejectDemo()">REJECT</button>
+    </div>
+
+    <p id="ra-job-status" class="ra-status">
+      Demonstration booking — no real job assigned.
+    </p>
+
+    <div id="ra-waybill" class="ra-waybill ra-card">
+      <h3>Private Driver Waybill</h3>
+      <div class="ra-line">
+        <span>Reference</span>
+        <strong>RA-DEMO-1001</strong>
+      </div>
+      <div class="ra-line">
+        <span>Pickup</span>
+        <strong>Sheffield</strong>
+      </div>
+      <div class="ra-line">
+        <span>Destination</span>
+        <strong>Manchester</strong>
+      </div>
+      <div class="ra-line">
+        <span>Driver earnings</span>
+        <strong>£49.50</strong>
+      </div>
+      <p class="ra-note">
+        Example waybill only. No live booking data.
+      </p>
+    </div>
+  </div>
+
+  <div class="ra-card">
+    <h3>Become an RA Rideway Driver</h3>
+    <p style="text-align:center;color:#ddd">
+      Join our professional private hire team.
+      Applications and invitations are subject
+      to management approval.
+    </p>
+    <div class="ra-buttons">
+      <a class="ra-apply ra-gold"
+        href="https://wa.me/447403816343?text=Hello%2C%20I%20would%20like%20to%20apply%20to%20drive%20for%20RA%20Rideway."
+        target="_blank" rel="noopener noreferrer">
+        APPLY TO DRIVE
+      </a>
+    </div>
+  </div>
+
+  <div class="ra-card">
+    <h3>Driver Standards</h3>
+    <p style="color:#ddd;text-align:center;line-height:1.7">
+      Approved drivers can qualify for Bronze,
+      Silver, Gold and Platinum recognition.
+      Customer feedback, completed journeys
+      and reliability contribute to rankings.
+    </p>
+    <p class="ra-note">
+      Driver ratings and rankings will require
+      secure accounts before going live.
+    </p>
+  </div>
+
+  <p class="ra-note">
+    This is a public design preview.
+    It does not accept real jobs, issue real
+    waybills or expose private financial data.
+  </p>
+</section>
+
+<script>
+  function raAcceptDemo() {
+    document.getElementById("ra-job-status").textContent =
+      "VIP job accepted — DEMO ONLY";
+    document.getElementById("ra-waybill").style.display =
+      "block";
+  }
+
+  function raRejectDemo() {
+    document.getElementById("ra-job-status").textContent =
+      "Job rejected — DEMO ONLY";
+    document.getElementById("ra-waybill").style.display =
+      "none";
+  }
+</script>
+<!-- END RA RIDEWAY VIP DRIVER AREA -->
+
+<!-- RA RIDEWAY CUSTOMER PORTAL V2 START -->
+<style>
+#ra-customer-v2 {
+  max-width: 760px;
+  margin: 35px auto;
+  padding: 24px;
+  background: linear-gradient(140deg,#080808,#241b0c);
+  color: #f7e8c0;
+  border: 1px solid #c9a64f;
+  border-radius: 20px;
+  font-family: Arial,sans-serif;
+}
+#ra-customer-v2 * {box-sizing:border-box}
+#ra-customer-v2 h2,
+#ra-customer-v2 h3 {
+  color:#f0ce78;
+  text-align:center;
+}
+#ra-customer-v2 .ra-muted {
+  color:#c8b88e;
+  text-align:center;
+}
+#ra-customer-v2 .ra-panel {
+  border:1px solid #75602f;
+  background:#17140f;
+  padding:18px;
+  border-radius:14px;
+  margin:18px 0;
+}
+#ra-customer-v2 label {
+  display:block;
+  margin:13px 0 6px;
+}
+#ra-customer-v2 input {
+  width:100%;
+  padding:13px;
+  background:#0b0b0b;
+  color:white;
+  border:1px solid #a88a44;
+  border-radius:8px;
+  font-size:16px;
+}
+#ra-customer-v2 button {
+  padding:13px;
+  border:1px solid #c9a64f;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:bold;
+}
+#ra-customer-v2 .ra-gold {
+  background:linear-gradient(100deg,#a87c2c,#f5d786);
+  color:#080808;
+}
+#ra-customer-v2 .ra-dark {
+  background:#111;
+  color:#e8c777;
+}
+#ra-customer-v2 .ra-tabs {
+  display:flex;
+  gap:10px;
+}
+#ra-customer-v2 .ra-tabs button {
+  flex:1;
+}
+#ra-customer-v2 .ra-hidden {
+  display:none;
+}
+#ra-customer-v2 .ra-row {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #554629;
+}
+#ra-customer-v2 .ra-row strong {
+  text-align:right;
+}
+#ra-customer-v2 .ra-note {
+  font-size:13px;
+  color:#d1bb83;
+  line-height:1.5;
+}
+</style>
+
+<section id="ra-customer-v2">
+  <h2>✦ RA RIDEWAY ✦</h2>
+  <p class="ra-muted">VIP CUSTOMER PORTAL</p>
+
+  <div class="ra-panel">
+    <div class="ra-tabs">
+      <button type="button" class="ra-gold"
+        onclick="raCustomerTab('login')">
+        LOGIN
+      </button>
+      <button type="button" class="ra-dark"
+        onclick="raCustomerTab('register')">
+        REGISTER
+      </button>
+    </div>
+
+    <div id="ra-customer-login">
+      <h3>Welcome Back</h3>
+      <form onsubmit="raCustomerDemo(event)">
+        <label for="ra-login-email">Email</label>
+        <input id="ra-login-email"
+          type="email" autocomplete="email" required>
+
+        <label for="ra-login-password">Password</label>
+        <input id="ra-login-password"
+          type="password"
+          autocomplete="current-password" required>
+
+        <button class="ra-gold"
+          style="width:100%;margin-top:18px">
+          LOGIN
+        </button>
+      </form>
+    </div>
+
+    <div id="ra-customer-register" class="ra-hidden">
+      <h3>Create Your VIP Account</h3>
+      <form onsubmit="raCustomerDemo(event)">
+        <label for="ra-reg-name">Full Name</label>
+        <input id="ra-reg-name" autocomplete="name" required>
+
+        <label for="ra-reg-email">Email</label>
+        <input id="ra-reg-email"
+          type="email" autocomplete="email" required>
+
+        <label for="ra-reg-phone">Phone Number</label>
+        <input id="ra-reg-phone"
+          type="tel" autocomplete="tel" required>
+
+        <label for="ra-reg-password">Password</label>
+        <input id="ra-reg-password"
+          type="password"
+          autocomplete="new-password"
+          minlength="12" required>
+
+        <button class="ra-gold"
+          style="width:100%;margin-top:18px">
+          CREATE ACCOUNT
+        </button>
+      </form>
+    </div>
+
+    <p id="ra-customer-message" class="ra-note"
+      role="status" aria-live="polite">
+      Preview only. Account registration and login
+      are not connected yet. Do not enter real passwords.
+    </p>
+  </div>
+
+  <div class="ra-panel">
+    <h3>My VIP Dashboard — Preview</h3>
+    <div class="ra-row">
+      <span>Membership</span>
+      <strong>VIP Customer</strong>
+    </div>
+    <div class="ra-row">
+      <span>Upcoming Bookings</span>
+      <strong>Not connected</strong>
+    </div>
+    <div class="ra-row">
+      <span>Booking History</span>
+      <strong>Not connected</strong>
+    </div>
+    <div class="ra-row">
+      <span>Payment Method</span>
+      <strong>Online card only</strong>
+    </div>
+    <p class="ra-note">
+      Actual booking history and payments
+      will appear after secure accounts
+      and booking services are connected.
+    </p>
+  </div>
+
+  <div class="ra-panel">
+    <h3>Customer Safety</h3>
+    <p class="ra-muted">
+      Customers will be able to block a driver
+      from future bookings, subject to admin oversight.
+    </p>
+    <button type="button" class="ra-dark"
+      style="width:100%"
+      onclick="alert('Driver blocking will be available after secure customer accounts are connected.')">
+      MANAGE BLOCKED DRIVERS
+    </button>
+  </div>
+
+  <p class="ra-note" style="text-align:center">
+    RA Rideway — Premium Private Hire.
+    Customer account features are currently a demonstration.
+  </p>
+</section>
+
+<script>
+function raCustomerTab(tab) {
+  document.getElementById("ra-customer-login")
+    .classList.toggle("ra-hidden", tab !== "login");
+  document.getElementById("ra-customer-register")
+    .classList.toggle("ra-hidden", tab !== "register");
+}
+
+function raCustomerDemo(event) {
+  event.preventDefault();
+  document.getElementById("ra-customer-message").textContent =
+    "Preview only: secure customer accounts are not active yet. " +
+    "No information has been submitted or saved.";
+  event.target.reset();
+}
+</script>
+<!-- RA RIDEWAY CUSTOMER PORTAL V2 END -->
+
+<!-- RA RIDEWAY OPERATIONS V1 START -->
+<style>
+#ra-operations {
+  max-width: 800px;
+  margin: 35px auto;
+  padding: 22px;
+  background: linear-gradient(145deg,#080808,#241b0e);
+  border: 1px solid #d4af37;
+  border-radius: 20px;
+  color: #f5e6bb;
+  font-family: Arial,sans-serif;
+}
+#ra-operations * {box-sizing:border-box}
+#ra-operations h2,
+#ra-operations h3 {
+  color:#f2cf79;
+  text-align:center;
+}
+#ra-operations .ra-op-panel {
+  background:#15120e;
+  border:1px solid #79632f;
+  border-radius:14px;
+  padding:18px;
+  margin:18px 0;
+}
+#ra-operations label {
+  display:block;
+  margin:14px 0 6px;
+  color:#e8d09b;
+}
+#ra-operations input,
+#ra-operations textarea,
+#ra-operations select {
+  width:100%;
+  padding:13px;
+  background:#090909;
+  color:white;
+  border:1px solid #a98b45;
+  border-radius:8px;
+  font-size:16px;
+}
+#ra-operations button {
+  width:100%;
+  margin-top:12px;
+  padding:14px;
+  border:0;
+  border-radius:9px;
+  background:linear-gradient(110deg,#a67a27,#f7da8b);
+  color:#080808;
+  font-weight:bold;
+  cursor:pointer;
+}
+#ra-operations button:disabled {
+  opacity:.5;
+  cursor:not-allowed;
+}
+#ra-operations .ra-op-row {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #514326;
+}
+#ra-operations .ra-op-row strong {
+  text-align:right;
+}
+#ra-operations .ra-op-muted {
+  color:#c7b68a;
+  font-size:13px;
+  line-height:1.6;
+}
+#ra-operations .ra-op-status {
+  padding:12px;
+  border:1px solid #806a38;
+  border-radius:8px;
+  margin-top:12px;
+  color:#f4d98d;
+}
+#ra-operations .ra-op-tag {
+  display:inline-block;
+  padding:6px 10px;
+  border:1px solid #d4af37;
+  border-radius:20px;
+  color:#f2d47c;
+  font-size:12px;
+}
+</style>
+
+<section id="ra-operations">
+  <h2>✦ RA RIDEWAY ✦</h2>
+  <p style="text-align:center;letter-spacing:2px">
+    VIP BOOKING & OPERATIONS
+  </p>
+  <p class="ra-op-muted" style="text-align:center">
+    Development preview — no live payments,
+    dispatch or accounts are connected.
+  </p>
+
+  <!-- CUSTOMER BOOKING -->
+  <div class="ra-op-panel">
+    <h3>Reserve Your VIP Journey</h3>
+    <p class="ra-op-muted">
+      Private hire journeys must be booked
+      at least 30 minutes in advance.
+    </p>
+
+    <form id="ra-op-booking">
+      <label for="ra-op-pickup">
+        Pickup Address
+      </label>
+      <input id="ra-op-pickup"
+        placeholder="Enter pickup address"
+        autocomplete="street-address"
+        required>
+
+      <label for="ra-op-destination">
+        Destination
+      </label>
+      <input id="ra-op-destination"
+        placeholder="Enter destination"
+        required>
+
+      <label for="ra-op-date">
+        Pickup Date & Time
+      </label>
+      <input id="ra-op-date"
+        type="datetime-local" required>
+
+      <label for="ra-op-passengers">
+        Passengers
+      </label>
+      <select id="ra-op-passengers">
+        <option value="1">1 passenger</option>
+        <option value="2">2 passengers</option>
+        <option value="3">3 passengers</option>
+        <option value="4">4 passengers</option>
+      </select>
+
+      <label for="ra-op-notes">
+        Special Requests
+      </label>
+      <textarea id="ra-op-notes" rows="3"
+        placeholder="Flight details, luggage or other requests">
+      </textarea>
+
+      <button type="submit">
+        CHECK BOOKING DETAILS
+      </button>
+    </form>
+
+    <div id="ra-op-booking-result"
+      class="ra-op-status"
+      role="status"
+      aria-live="polite">
+      Enter your journey details to continue.
+    </div>
+
+    <p class="ra-op-muted">
+      Final prices require a secure quotation
+      service. No mileage rates are published here.
+    </p>
+  </div>
+
+  <!-- CARD PAYMENT -->
+  <div class="ra-op-panel">
+    <h3>Secure Card Payment</h3>
+    <div class="ra-op-row">
+      <span>Payment method</span>
+      <strong>Online card only</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Cash payments</span>
+      <strong>Not accepted</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Payment status</span>
+      <strong>Not connected</strong>
+    </div>
+    <button type="button" disabled>
+      PAY SECURELY — COMING SOON
+    </button>
+    <p class="ra-op-muted">
+      A payment provider must be connected
+      before customers can pay.
+      Never collect card numbers in this page.
+    </p>
+  </div>
+
+  <!-- DRIVER DISPATCH -->
+  <div class="ra-op-panel">
+    <h3>VIP Driver Dispatch</h3>
+    <span class="ra-op-tag">SYSTEM PREVIEW</span>
+
+    <div class="ra-op-row">
+      <span>Job availability</span>
+      <strong>Approved online drivers</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Job assignment</span>
+      <strong>First valid acceptance</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Driver cancellation</span>
+      <strong>Automatic reassignment</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Driver offer</span>
+      <strong>Own earnings only</strong>
+    </div>
+
+    <p class="ra-op-muted">
+      Real dispatch requires secure driver
+      authentication, notifications and
+      server-side assignment to prevent
+      multiple drivers accepting the same job.
+    </p>
+  </div>
+
+  <!-- DRIVER TRACKING -->
+  <div class="ra-op-panel">
+    <h3>Live Journey Tracking</h3>
+    <div class="ra-op-row">
+      <span>Driver location</span>
+      <strong>Not connected</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Customer tracking</span>
+      <strong>After assignment</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Journey status</span>
+      <strong>Awaiting live system</strong>
+    </div>
+    <p class="ra-op-muted">
+      Live tracking will require driver
+      permission, location services and
+      secure access for the assigned customer.
+    </p>
+  </div>
+
+  <!-- DRIVER PERFORMANCE -->
+  <div class="ra-op-panel">
+    <h3>Driver Performance</h3>
+    <div class="ra-op-row">
+      <span>Driver ranks</span>
+      <strong>Bronze to Platinum</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Minimum rating</span>
+      <strong>4.8 / 5</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Review eligibility</span>
+      <strong>20 rated journeys</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Low-rating action</span>
+      <strong>Admin review</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Cancellation rate</span>
+      <strong>Tracked when connected</strong>
+    </div>
+    <p class="ra-op-muted">
+      Ratings and cancellation records
+      require verified completed bookings.
+      Reviews do not automatically suspend drivers.
+    </p>
+  </div>
+
+  <!-- DRIVER WALLET -->
+  <div class="ra-op-panel">
+    <h3>Driver Wallet</h3>
+    <div class="ra-op-row">
+      <span>Available earnings</span>
+      <strong>Not connected</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Payout option</span>
+      <strong>Instant request if eligible</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Private waybill</span>
+      <strong>Assigned driver only</strong>
+    </div>
+    <button type="button" disabled>
+      REQUEST PAYOUT — COMING SOON
+    </button>
+    <p class="ra-op-muted">
+      Payouts require a verified driver,
+      eligible funds and a supported
+      payment provider.
+    </p>
+  </div>
+
+  <!-- CUSTOMER SAFETY -->
+  <div class="ra-op-panel">
+    <h3>Customer Safety</h3>
+    <div class="ra-op-row">
+      <span>Driver blocking</span>
+      <strong>Supported when connected</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Complaints</span>
+      <strong>Admin oversight</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Customer rating</span>
+      <strong>After completed journey</strong>
+    </div>
+    <p class="ra-op-muted">
+      Customer driver blocks must be enforced
+      by the dispatch service, not just
+      hidden on the website.
+    </p>
+  </div>
+
+  <!-- ADMIN SYSTEM -->
+  <div class="ra-op-panel">
+    <h3>RA Rideway Administration</h3>
+    <span class="ra-op-tag">PRIVATE SYSTEM PLANNED</span>
+
+    <div class="ra-op-row">
+      <span>Driver applications</span>
+      <strong>Approval required</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Driver invitations</span>
+      <strong>Supported when connected</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Booking management</span>
+      <strong>Secure backend required</strong>
+    </div>
+    <div class="ra-op-row">
+      <span>Financial reports</span>
+      <strong>Admin access only</strong>
+    </div>
+    <p class="ra-op-muted">
+      Private pricing, company commission,
+      driver documents and administrative
+      controls must stay on a protected
+      server. This public page does not
+      expose or store those details.
+    </p>
+  </div>
+
+  <p class="ra-op-muted" style="text-align:center">
+    RA Rideway — Premium Private Hire
+    <br>
+    Booking & operations development preview
+  </p>
+</section>
+
+<script>
+(function () {
+  const form = document.getElementById(
+    "ra-op-booking"
+  );
+  const dateInput = document.getElementById(
+    "ra-op-date"
+  );
+  const result = document.getElementById(
+    "ra-op-booking-result"
+  );
+
+  function localDateTime(date) {
+    const pad = n => String(n).padStart(2,"0");
+    return date.getFullYear() + "-" +
+      pad(date.getMonth() + 1) + "-" +
+      pad(date.getDate()) + "T" +
+      pad(date.getHours()) + ":" +
+      pad(date.getMinutes());
+  }
+
+  function updateMinimum() {
+    const minimum = new Date(
+      Date.now() + 30 * 60 * 1000
+    );
+    dateInput.min = localDateTime(minimum);
+  }
+
+  updateMinimum();
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    updateMinimum();
+
+    const pickup = document.getElementById(
+      "ra-op-pickup"
+    ).value.trim();
+
+    const destination = document.getElementById(
+      "ra-op-destination"
+    ).value.trim();
+
+    const pickupTime = new Date(dateInput.value);
+
+    if (!pickup || !destination ||
+        Number.isNaN(pickupTime.getTime())) {
+      result.textContent =
+        "Please complete your journey details.";
+      return;
+    }
+
+    if (pickupTime.getTime() <
+        Date.now() + 30 * 60 * 1000) {
+      result.textContent =
+        "Please choose a pickup time at least " +
+        "30 minutes from now.";
+      return;
+    }
+
+    if (pickup.toLowerCase() ===
+        destination.toLowerCase()) {
+      result.textContent =
+        "Pickup and destination must be different.";
+      return;
+    }
+
+    result.textContent =
+      "Journey details checked. " +
+      "Live address verification, final pricing " +
+      "and secure card payment are not yet " +
+      "connected. No booking has been placed.";
+  });
+})();
+</script>
+<!-- RA RIDEWAY OPERATIONS V1 END -->
+
 </body>   
 </html>
