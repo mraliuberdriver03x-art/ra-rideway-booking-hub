@@ -213,79 +213,13 @@ body::before {
     animation: none;
   }
 }
-  </style> 
-  
-<style>
-.ra-panther-track {
-  position: relative;
-  height: 110px;
-  overflow: hidden;
-  margin: 12px 0;
-}
-.ra-panther {
-  position: absolute;
-  bottom: 10px;
-  width: 120px;
-  height: 65px;
-  animation: pantherTravel 8s linear infinite alternate;
-  filter: drop-shadow(0 0 8px #008cff);
-}
-.ra-panther svg {
-  width: 100%;
-  height: 100%;
-}
-.ra-panther .leg1 {
-  transform-origin: 45px 34px;
-  animation: pantherLeg .35s infinite alternate;
-}
-.ra-panther .leg2 {
-  transform-origin: 83px 34px;
-  animation: pantherLeg .35s infinite alternate-reverse;
-}
-@keyframes pantherLeg {
-  to { transform: rotate(25deg); }
-}
-@keyframes pantherTravel {
-  from { left: 0; transform: scaleX(1); }
-  to { left: calc(100% - 120px); transform: scaleX(-1); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ra-panther, .ra-panther .leg1,
-  .ra-panther .leg2 { animation: none; }
-}
-</style>
+  </style>
 
-<div class="ra-panther-track">
-  <div class="ra-panther">
-    <svg viewBox="0 0 140 80"
-         xmlns="http://www.w3.org/2000/svg">
-      <path d="M35 30 Q65 12 100 28
-               L115 35 107 50 43 49Z"
-            fill="#050505" stroke="#28456b"
-            stroke-width="2"/>
-      <path d="M40 34 Q10 15 7 42"
-            fill="none" stroke="#050505"
-            stroke-width="9"
-            stroke-linecap="round"/>
-      <path class="leg1"
-            d="M48 42 L33 64 L14 68"
-            fill="none" stroke="#050505"
-            stroke-width="11"
-            stroke-linecap="round"/>
-      <path class="leg2"
-            d="M89 42 L105 62 L126 65"
-            fill="none" stroke="#050505"
-            stroke-width="11"
-            stroke-linecap="round"/>
-      <path d="M104 26 L119 17 132 25
-               135 40 119 47 105 39Z"
-            fill="#050505" stroke="#28456b"
-            stroke-width="2"/>
-      <circle cx="126" cy="31" r="3"
-              fill="#00cfff"/>
-    </svg>
-  </div>
-</div>
+
+
+    
+  
+    
 
 </body>   
 </html>
