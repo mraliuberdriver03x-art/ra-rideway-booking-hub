@@ -135,7 +135,10 @@ a { color:inherit; }
 
 <section id="booking" style="background:#111; color:white; padding:30px 20px; text-align:center;">
   <h2 style="color:#d4af37;">Book Your Ride</h2>
-  <form onsubmit="event.preventDefault(); alert('Booking form preview only. Online booking is not connected yet.');" style="max-width:450px; margin:auto; display:grid; gap:15px;">
+  
+<form onsubmit="event.preventDefault(); const d = Array.from(this.elements).filter(e => e.matches('input, select')).map(e => e.value); const msg = 'RA Rideway Booking Request\nName: '+d[0]+'\nPhone: '+d[1]+'\nPickup: '+d[2]+'\nDestination: '+d[3]+'\nDate: '+d[4]+'\nTime: '+d[5]+'\nVehicle: '+d[6]; window.open('https://wa.me/447403816343?text='+encodeURIComponent(msg),'_blank');" style="max-width:450px; margin:auto; display:grid; gap:15px;">
+  
+
     <input type="text" placeholder="Your Full Name" aria-label="Full name" required>
     <input type="tel" placeholder="Phone Number" aria-label="Phone number" required>
     <input type="text" placeholder="Pickup Location" aria-label="Pickup location" required>
