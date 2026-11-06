@@ -1,32 +1,173 @@
 <!doctype html>
-<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0e14"><title>Customer Portal | RA Rideway</title><meta name="description" content="RA Rideway customer registration, sign-in, account recovery and private hire bookings.">
-<style>
-:root{color-scheme:dark;--gold:#e9c67b;--muted:#b2bbc8}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -10%,#3d2d1c,transparent 60%),#090c12;color:#f5f1e9;font-family:system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--gold);text-decoration:none}.shell{max-width:530px;margin:auto;padding:16px;min-height:100svh}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:0 0 27px}.brand{font-size:19px;letter-spacing:1.5px;font-weight:900;color:var(--gold)}.small{font-size:10px;letter-spacing:1.5px;color:#aeb7c8}.top a{border:1px solid #6e5a35;border-radius:10px;font-size:11px;padding:10px}.intro{font-size:13px;line-height:1.5;color:var(--muted);margin:0 0 18px}h1{font-family:Georgia,serif;font-size:30px;font-weight:600;margin:0 0 8px;color:var(--gold)}h2{font-size:20px;margin:0 0 13px;color:var(--gold)}.card{border:1px solid #625037;background:linear-gradient(150deg,#1c2029,#111720);padding:19px;border-radius:19px;box-shadow:0 14px 34px #0004;margin-bottom:13px}.hidden{display:none!important}.field{margin-bottom:13px}.field label{display:block;font-size:12px;font-weight:700;color:#dcd8d0;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #485061;background:#0a0e15;border-radius:11px;color:#fff;padding:13px;min-height:47px;outline:0}.field textarea{min-height:70px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.primary,.secondary{width:100%;min-height:49px;border-radius:11px;font-weight:800;font-size:14px;padding:11px}.primary{border:0;background:linear-gradient(100deg,#b6893c,#f3d996);color:#18140e}.secondary{background:#171b24;border:1px solid #79633a;color:var(--gold);margin-top:9px}.switch{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;font-size:12px;margin-top:15px}.switch button,.textbtn{border:0;background:none;color:var(--gold);padding:4px 0;font-weight:750;text-decoration:underline;text-underline-offset:3px}.notice{display:none;padding:12px 13px;border:1px solid #8a6636;border-radius:11px;background:#292214;color:#f1d9a6;font-size:12px;line-height:1.5;margin-bottom:13px}.notice.show{display:block}.muted{font-size:12px;line-height:1.5;color:var(--muted)}.heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.heading h1{margin:0}.heading button{background:transparent;border:1px solid #584f42;padding:9px;border-radius:9px;color:#f0d6a1;font-size:12px}.booking{border:1px solid #41495a;border-radius:12px;padding:13px;margin:9px 0;background:#121a24}.booking strong{color:var(--gold);display:block;margin-bottom:6px}.booking p{font-size:12px;line-height:1.5;color:#c5cbd3;margin:0}.booking small{display:block;color:#9cacc1;font-size:11px;margin-top:5px}.tag{display:inline-block;font-size:10px;padding:4px 8px;border:1px solid #8e7343;border-radius:30px;color:#ead09b;margin:0 0 6px}.links{display:flex;justify-content:center;gap:18px;font-size:12px;padding:20px 0 6px}footer{text-align:center;font-size:11px;color:#9da8b6;margin:16px 0}.offline{background:#282116;border:1px solid #927143;border-radius:13px;padding:13px;font-size:12px;line-height:1.5;color:#f0d29c;margin-bottom:16px}
-</style></head><body><div class="shell"><header class="top"><div><div class="brand">✦ RA RIDEWAY</div><div class="small">VIP CUSTOMER PORTAL</div></div><a href="index.html">← Main website</a></header><div id="notice" class="notice" role="status" aria-live="polite"></div><div id="setup" class="offline hidden">Secure customer accounts are being connected. Please don't enter personal details or passwords until this message disappears.</div>
-<section id="loginView" class="card"><h1>Welcome back.</h1><p class="intro">Sign in to book a ride and view your journeys.</p><form id="loginForm"><div class="field"><label for="loginEmail">Email address</label><input id="loginEmail" type="email" autocomplete="email" required></div><div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" minlength="8" required></div><button class="primary" type="submit">Sign in</button></form><div class="switch"><button id="showRegister" type="button">Create account</button><button id="showRecovery" type="button">Forgot password?</button></div></section>
-<section id="registerView" class="card hidden"><h1>Create account.</h1><p class="intro">Register to book RA Rideway journeys.</p><form id="registerForm"><div class="field"><label for="regName">Full name</label><input id="regName" autocomplete="name" maxlength="120" required></div><div class="field"><label for="regDOB">Date of birth</label><input id="regDOB" type="date" min="1900-01-01" required></div><div class="field"><label for="regPhone">Mobile number</label><input id="regPhone" type="tel" autocomplete="tel" maxlength="25" required></div><div class="field"><label for="regEmail">Email address</label><input id="regEmail" type="email" autocomplete="email" required></div><div class="field"><label for="regPassword">Create password</label><input id="regPassword" type="password" autocomplete="new-password" minlength="8" required></div><button type="submit" class="primary">Register</button><p class="muted">We use your details to manage your account and bookings. A privacy notice and secure email service must be configured before launch.</p></form><button class="secondary" id="backFromRegister" type="button">Already registered? Sign in</button></section>
-<section id="recoveryView" class="card hidden"><h1>Forgot password?</h1><p class="intro">Enter your account email to receive a one-time reset code.</p><form id="recoveryForm"><div class="field"><label for="resetEmail">Email address</label><input id="resetEmail" type="email" autocomplete="email" required></div><button class="primary" type="submit">Email me a code</button></form><button class="secondary" id="backFromRecovery" type="button">Back to sign in</button></section>
-<section id="verifyView" class="card hidden"><h1>Enter your code.</h1><p class="intro">Check your email. Enter the reset code and choose a new password.</p><form id="verifyForm"><div class="field"><label for="resetCode">Email verification code</label><input id="resetCode" inputmode="numeric" autocomplete="one-time-code" maxlength="12" required></div><div class="field"><label for="newPassword">New password</label><input id="newPassword" type="password" autocomplete="new-password" minlength="8" required></div><button class="primary" type="submit">Reset password</button></form><button class="secondary" id="backFromVerify" type="button">Back to sign in</button></section>
-<section id="accountView" class="hidden"><div class="heading"><h1 id="accountTitle">My account</h1><button id="signOut" type="button">Sign out</button></div><section class="card"><h2>Book private hire</h2><p class="intro">Send your booking to approved RA Rideway drivers. Final fare and operator confirmation are handled separately.</p><form id="bookingForm"><div class="field"><label for="pickup">Pickup address</label><input id="pickup" maxlength="240" placeholder="House number, road and area" required></div><div class="field"><label for="destination">Destination</label><input id="destination" maxlength="240" placeholder="Where are you going?" required></div><div class="pair"><div class="field"><label for="pickupDate">Date</label><input id="pickupDate" type="date" required></div><div class="field"><label for="pickupTime">Time</label><input id="pickupTime" type="time" required></div></div><div class="field"><label for="passengers">Passengers</label><select id="passengers" required><option value="1">1 passenger</option><option value="2">2 passengers</option><option value="3">3 passengers</option><option value="4">4 passengers</option><option value="5">5 passengers</option><option value="6">6 passengers</option><option value="7">7 passengers</option><option value="8">8 passengers</option></select></div><div class="field"><label for="notes">Notes (optional)</label><textarea id="notes" maxlength="500" placeholder="Flight number, luggage or access notes"></textarea></div><button class="primary" type="submit">Request driver →</button><p class="muted">No payment is taken here. A driver accepting the offer does not replace operator approval or fare confirmation.</p></form></section><section class="card"><h2>My bookings</h2><div id="bookings"><p class="muted">Your booking history will appear here.</p></div></section></section><nav class="links"><a href="rental.html">🚘 Luxury rental</a><a href="tel:+447403816343">☎ Contact RA Rideway</a></nav><footer>RA Rideway Private Hire · Secure customer access</footer></div>
-<script src="app-config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101019">
+  <meta name="description" content="RA Rideway Private Hire customer account and journey requests.">
+  <title>Customer Portal | RA Rideway</title>
+  <style>
+    :root{color-scheme:dark;--gold:#edcd82;--muted:#b7bed0;--panel:#171b27;--line:#7f6943}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -8%,#49341c,transparent 58%),#0a0c12;color:#f4f0e9;font:16px system-ui,-apple-system,'Segoe UI',sans-serif}
+    .shell{width:min(580px,100%);margin:auto;padding:18px 17px 40px}a{color:var(--gold)}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 23px}
+    .brand{font-size:20px;font-weight:900;letter-spacing:2px;color:var(--gold)}.sub{font-size:10px;letter-spacing:1.4px;color:#b9bcce}
+    .home{font-size:12px;text-decoration:none;border:1px solid var(--line);padding:11px;border-radius:11px;white-space:nowrap}
+    .card{border:1px solid #66523a;background:linear-gradient(140deg,#1e222d,var(--panel));border-radius:18px;padding:20px;margin-bottom:14px;box-shadow:0 14px 30px #0004}
+    h1{font:normal 31px Georgia,serif;color:var(--gold);margin:0 0 10px}h2{font-size:19px;color:var(--gold);margin:0 0 11px}
+    p{line-height:1.55}small,.muted{color:var(--muted);font-size:13px;line-height:1.5}.hidden{display:none!important}
+    label{display:block;font-size:13px;font-weight:700;color:#e7e1d3;margin:15px 0 6px}
+    input,select{display:block;width:100%;font:inherit;background:#0c1019;border:1px solid #596172;border-radius:10px;color:#fff;padding:13px;min-height:46px}
+    input:focus,select:focus{outline:2px solid #c7a55b;outline-offset:1px}
+    button{font:inherit;cursor:pointer}button:disabled{opacity:.48;cursor:not-allowed}
+    .primary,.secondary{width:100%;border-radius:11px;min-height:48px;font-weight:800;margin-top:15px;padding:10px}
+    .primary{border:0;background:linear-gradient(110deg,#b98b3c,#f5dfa3);color:#17120b}
+    .secondary{border:1px solid var(--line);background:#181c28;color:var(--gold)}
+    .switch{display:flex;justify-content:space-between;gap:13px;font-size:13px;margin:16px 0 0}
+    .switch a{cursor:pointer;text-decoration:underline}
+    .notice{border:1px solid #ab8547;background:#2c2619;color:#f1dbab;border-radius:11px;padding:13px;margin-bottom:14px;font-size:13px;line-height:1.5}
+    .notice.error{border-color:#b76772;color:#ffe0de;background:#341d24}.notice.ok{border-color:#79ab8c;color:#d0f1db;background:#153027}
+    .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.security{padding:12px 0 2px}.security .hint{font-size:12px;color:var(--muted);margin-bottom:9px}
+    .booking{padding:15px;border:1px solid #50586c;border-radius:12px;margin:11px 0;background:#111722}
+    .booking strong{display:block;color:var(--gold);margin:4px 0}.booking small{display:block}.status{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em}
+    footer{text-align:center;color:#9aa6b5;font-size:11px;padding:22px 0}#status{margin-bottom:15px}
+    @media(max-width:360px){.pair{grid-template-columns:1fr}.brand{font-size:16px}}
+  </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header><div><div class="brand">✦ RA RIDEWAY</div><div class="sub">PRIVATE HIRE · CUSTOMER PORTAL</div></div><a class="home" href="index.html">← Main website</a></header>
+    <div id="status" class="notice hidden" role="status" aria-live="polite"></div>
+
+    <div id="guest">
+      <div class="card">
+        <section id="loginPanel">
+          <h1>Welcome back.</h1><p class="muted">Sign in to your RA Rideway account.</p>
+          <form id="loginForm">
+            <label for="loginEmail">Email address</label><input type="email" id="loginEmail" autocomplete="email" required>
+            <label for="loginPassword">Password</label><input type="password" id="loginPassword" autocomplete="current-password" required>
+            <div class="security"><p class="hint">Complete the security check before signing in.</p>
+              <div id="turnstile" class="cf-turnstile" data-sitekey="0x4AAAAAAF2eN0nnL9Je5jLB"></div>
+            </div>
+            <button class="primary" type="submit">Sign in</button>
+          </form>
+          <div class="switch"><a id="showRegister" href="#register">Create account</a><a href="tel:+447403816343">Need help?</a></div>
+        </section>
+        <section id="registerPanel" class="hidden">
+          <h1>Create account.</h1>
+          <div class="notice">New account registration is not active yet. Email verification must be configured before real customers can register.</div>
+          <p class="muted">Once registration is enabled, you will be able to sign up with your full name, date of birth, phone number, email and password.</p>
+          <button class="secondary" type="button" id="backToLogin">Back to sign in</button>
+        </section>
+      </div>
+    </div>
+
+    <div id="member" class="hidden">
+      <div class="card"><div class="switch"><h1 id="hello">My account</h1><button id="logout" class="secondary" style="width:auto;margin:0" type="button">Sign out</button></div><p id="accountEmail" class="muted"></p></div>
+      <section class="card"><h2>Request a journey</h2><p class="muted">This is a booking request only. Your journey and final price must be confirmed by RA Rideway. No payment is taken here and drivers are not dispatched by this page.</p>
+        <form id="bookingForm">
+          <label for="pickup">Pickup address</label><input id="pickup" maxlength="240" placeholder="Street, postcode and town" required>
+          <label for="destination">Destination</label><input id="destination" maxlength="240" required>
+          <div class="pair"><div><label for="journeyWhen">Date and time</label><input type="datetime-local" id="journeyWhen" required></div><div><label for="passengers">Passengers</label><select id="passengers" required><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select></div></div>
+          <button class="primary" type="submit">Send booking request</button>
+        </form>
+      </section>
+      <section class="card"><h2>My booking requests</h2><div id="bookings"><p class="muted">Loading your bookings…</p></div></section>
+    </div>
+    <footer>RA Rideway Private Hire · <a href="index.html">Main website</a> · <a href="tel:+447403816343">Contact</a></footer>
+  </main>
 <script>
-(()=>{'use strict';
-const $=id=>document.getElementById(id),views=['login','register','recovery','verify','account'],cfg=window.RA_CONFIG||{},ready=!!(cfg.supabaseUrl&&cfg.supabasePublishableKey&&window.supabase);let sb=null,resetEmail='',channel=null;const dates=[new Date().getFullYear(),String(new Date().getMonth()+1).padStart(2,'0'),String(new Date().getDate()).padStart(2,'0')].join('-');$('regDOB').max=dates;$('pickupDate').min=dates;
-function show(name){views.forEach(v=>$(v+'View').classList.toggle('hidden',v!==name));$('notice').classList.remove('show');location.hash=name==='login'?'login':'';window.scrollTo(0,0)}
-function notice(msg){$('notice').textContent=msg;$('notice').classList.add('show');window.scrollTo(0,0)}
-function need(){if(!ready){notice('Secure customer accounts are not connected yet. No details have been sent.');return false}return true}
-function safeMessage(err){return (err&&err.message)?err.message:'Something went wrong. Please try again.'}
-function setBusy(form,on){form.querySelectorAll('button').forEach(b=>b.disabled=on)}
-$('showRegister').onclick=()=>show('register');$('showRecovery').onclick=()=>show('recovery');$('backFromRegister').onclick=$('backFromRecovery').onclick=$('backFromVerify').onclick=()=>show('login');
-$('registerForm').onsubmit=async e=>{e.preventDefault();if(!need())return;const f=e.target;setBusy(f,true);try{const {data,error}=await sb.auth.signUp({email:$('regEmail').value.trim().toLowerCase(),password:$('regPassword').value,options:{emailRedirectTo:location.origin+location.pathname,data:{full_name:$('regName').value.trim(),dob:$('regDOB').value,phone:$('regPhone').value.trim()}}});if(error)throw error;if(data.session){await showAccount(data.session.user)}else{show('login');notice('Registration submitted. Check your email and confirm your address before signing in.')}}catch(err){notice(safeMessage(err))}finally{setBusy(f,false)}};
-$('loginForm').onsubmit=async e=>{e.preventDefault();if(!need())return;const f=e.target;setBusy(f,true);try{const {data,error}=await sb.auth.signInWithPassword({email:$('loginEmail').value.trim().toLowerCase(),password:$('loginPassword').value});if(error)throw error;await showAccount(data.user)}catch(err){notice(safeMessage(err))}finally{setBusy(f,false)}};
-$('recoveryForm').onsubmit=async e=>{e.preventDefault();if(!need())return;const f=e.target;setBusy(f,true);resetEmail=$('resetEmail').value.trim().toLowerCase();try{const {error}=await sb.auth.resetPasswordForEmail(resetEmail);if(error)throw error;show('verify');notice('If this account exists, a recovery email has been requested. Enter the code from that email.')}catch(err){notice(safeMessage(err))}finally{setBusy(f,false)}};
-$('verifyForm').onsubmit=async e=>{e.preventDefault();if(!need())return;const f=e.target;setBusy(f,true);try{const {error}=await sb.auth.verifyOtp({email:resetEmail,token:$('resetCode').value.trim(),type:'recovery'});if(error)throw error;const {error:updateError}=await sb.auth.updateUser({password:$('newPassword').value});if(updateError)throw updateError;await sb.auth.signOut();show('login');notice('Password updated. Sign in using your new password.')}catch(err){notice(safeMessage(err))}finally{setBusy(f,false)}};
-async function showAccount(user){if(!user)return;show('account');let name='Customer';const {data}=await sb.from('customer_profiles').select('full_name').eq('user_id',user.id).maybeSingle();if(data&&data.full_name)name=data.full_name.split(' ')[0];$('accountTitle').textContent='Hello, '+name+'.';await refreshBookings(user.id);if(channel)await sb.removeChannel(channel);channel=sb.channel('customer-'+user.id).on('postgres_changes',{event:'*',schema:'public',table:'ride_bookings',filter:'customer_id=eq.'+user.id},()=>refreshBookings(user.id)).subscribe()}
-$('bookingForm').onsubmit=async e=>{e.preventDefault();if(!need())return;const f=e.target;setBusy(f,true);try{const {data:{user},error:ue}=await sb.auth.getUser();if(ue||!user)throw Error('Please sign in again.');const pickup=new Date($('pickupDate').value+'T'+$('pickupTime').value);if(!(pickup>Date.now()))throw Error('Choose a future pickup time.');const {error}=await sb.from('ride_bookings').insert({customer_id:user.id,pickup_location:$('pickup').value.trim(),destination:$('destination').value.trim(),pickup_at:pickup.toISOString(),passengers:Number($('passengers').value),notes:$('notes').value.trim()||null});if(error)throw error;f.reset();$('pickupDate').min=dates;notice('Journey request submitted. You can track the status under My bookings.');await refreshBookings(user.id)}catch(err){notice(safeMessage(err))}finally{setBusy(f,false)}};
-async function refreshBookings(uid){const container=$('bookings');const {data,error}=await sb.from('ride_bookings').select('id,pickup_location,destination,pickup_at,status,created_at').eq('customer_id',uid).order('created_at',{ascending:false}).limit(20);container.replaceChildren();if(error){const p=document.createElement('p');p.className='muted';p.textContent='Bookings unavailable: '+safeMessage(error);container.append(p);return}if(!data.length){const p=document.createElement('p');p.className='muted';p.textContent='No bookings yet. Your requests will appear here.';container.append(p);return}for(const b of data){const el=document.createElement('article');el.className='booking';const tag=document.createElement('span');tag.className='tag';tag.textContent={requested:'Looking for a driver',accepted:'Driver accepted',arriving:'Driver arriving',in_progress:'Journey underway',completed:'Completed',cancelled:'Cancelled'}[b.status]||b.status;const strong=document.createElement('strong');strong.textContent=b.pickup_location+' → '+b.destination;const p=document.createElement('p');p.textContent=new Date(b.pickup_at).toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short'});el.append(tag,strong,p);container.append(el)}}
-$('signOut').onclick=async()=>{if(!ready)return;if(channel){await sb.removeChannel(channel);channel=null}await sb.auth.signOut();show('login')};
-if(!ready){$('setup').classList.remove('hidden');document.querySelectorAll('form').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();need()},true));show(location.hash==='#register'?'register':'login');return}
-sb=window.supabase.createClient(cfg.supabaseUrl,cfg.supabasePublishableKey);sb.auth.getUser().then(({data:{user}})=>{if(user)showAccount(user);else show(location.hash==='#register'?'register':'login')}).catch(()=>show('login'));
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const status = $('status');
+  let busy = false;
+  const setNotice = (text, kind = '') => {
+    status.textContent = text;
+    status.className = 'notice ' + kind;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  const clearNotice = () => { status.className = 'notice hidden'; status.textContent = ''; };
+  const showGuest = () => { $('guest').classList.remove('hidden'); $('member').classList.add('hidden'); };
+  const showMember = () => { $('guest').classList.add('hidden'); $('member').classList.remove('hidden'); };
+  const request = async (path, options = {}) => {
+    const response = await fetch(path, { credentials: 'same-origin', cache: 'no-store', ...options });
+    let data;
+    try { data = await response.json(); } catch { data = { message: 'Unexpected server response.' }; }
+    if (!response.ok) throw Object.assign(new Error(data.message || 'Request failed.'), { status: response.status });
+    return data;
+  };
+  const isoDate = d => {
+    const pad = x => String(x).padStart(2, '0');
+    return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+  };
+  const updateMin = () => { $('journeyWhen').min = isoDate(new Date(Date.now() + 30 * 60000)); };
+  const badge = (s) => ({ requested: 'Awaiting review', accepted: 'Accepted', arriving: 'Arriving', in_progress: 'On journey', completed: 'Completed', cancelled: 'Cancelled' }[s] || 'Pending');
+  const renderBookings = rows => {
+    const container = $('bookings'); container.replaceChildren();
+    if (!rows.length) { const p = document.createElement('p'); p.className = 'muted'; p.textContent = 'No booking requests yet.'; container.append(p); return; }
+    rows.forEach(b => {
+      const item = document.createElement('article'); item.className = 'booking';
+      const tag = document.createElement('span'); tag.className = 'status'; tag.textContent = badge(b.status);
+      const strong = document.createElement('strong'); strong.textContent = b.pickup_location + ' → ' + b.destination;
+      const info = document.createElement('small');
+      info.textContent = new Date(b.pickup_at).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) + ' · ' + b.passengers + ' passenger(s)';
+      item.append(tag,strong,info); container.append(item);
+    });
+  };
+  const refresh = async () => {
+    try {
+      const data = await request('/api/account');
+      showMember();
+      const firstName = data.user.full_name.trim().split(/\s+/)[0] || 'Customer';
+      $('hello').textContent = 'Hello, ' + firstName;
+      $('accountEmail').textContent = data.user.email;
+      renderBookings(data.bookings || []);
+      clearNotice();
+    } catch(e) {
+      showGuest();
+      if (e.status !== 401) setNotice('Account service is not ready yet. Please try later.', 'error');
+    }
+  };
+  $('showRegister').addEventListener('click', e => { e.preventDefault(); clearNotice(); $('loginPanel').classList.add('hidden'); $('registerPanel').classList.remove('hidden'); });
+  $('backToLogin').addEventListener('click', () => { clearNotice(); $('loginPanel').classList.remove('hidden'); $('registerPanel').classList.add('hidden'); });
+  $('loginForm').addEventListener('submit', async e => {
+    e.preventDefault(); if (busy) return;
+    const token = document.querySelector('input[name="cf-turnstile-response"]')?.value || '';
+    if (!token) return setNotice('Please complete the security check first.', 'error');
+    busy = true;
+    const button = $('loginForm').querySelector('button'); button.disabled = true;
+    try {
+      await request('/api/login', { method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email: $('loginEmail').value.trim(), password: $('loginPassword').value, turnstileToken: token }) });
+      $('loginPassword').value = '';
+      await refresh();
+    } catch(err) { setNotice(err.message, 'error'); }
+    finally { if (window.turnstile) window.turnstile.reset(); busy = false; button.disabled = false; }
+  });
+  $('bookingForm').addEventListener('submit', async e => {
+    e.preventDefault(); if (busy) return; updateMin();
+    const picked = new Date($('journeyWhen').value);
+    if (!Number.isFinite(picked.getTime()) || picked.getTime() < Date.now() + 30*60000) {
+      return setNotice('Choose a valid pickup at least 30 minutes from now.', 'error');
+    }
+    busy = true; const button = $('bookingForm').querySelector('button'); button.disabled = true;
+    try {
+      const data = await request('/api/account', { method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ action: 'book', pickup_location: $('pickup').value.trim(),
+          destination: $('destination').value.trim(), pickup_at: picked.toISOString(),
+          passengers: Number($('passengers').value) }) });
+      $('bookingForm').reset(); await refresh(); setNotice(data.message, 'ok');
+    } catch(err) { setNotice(err.message, 'error'); }
+    finally { busy = false; button.disabled = false; }
+  });
+  $('logout').addEventListener('click', async () => {
+    try { await request('/api/account', { method: 'DELETE' }); showGuest(); setNotice('You have signed out.', 'ok'); }
+    catch(err) { setNotice(err.message, 'error'); }
+  });
+  updateMin(); refresh();
 })();
-</script></body></html>
+</script>
+</body>
+</html>
