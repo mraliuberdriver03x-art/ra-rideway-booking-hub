@@ -47,19 +47,28 @@
           <form id="loginForm">
             <label for="loginEmail">Email address</label><input type="email" id="loginEmail" autocomplete="email" required>
             <label for="loginPassword">Password</label><input type="password" id="loginPassword" autocomplete="current-password" required>
-            <div class="security"><p class="hint">Complete the security check before signing in.</p>
-              <div id="turnstile" class="cf-turnstile" data-sitekey="0x4AAAAAAF2eNOnnL9Je5jLB"></div>
-            </div>
             <button class="primary" type="submit">Sign in</button>
           </form>
           <div class="switch"><a id="showRegister" href="#register">Create account</a><a href="tel:+447403816343">Need help?</a></div>
         </section>
         <section id="registerPanel" class="hidden">
           <h1>Create account.</h1>
-          <div class="notice">New account registration is not active yet. Email verification must be configured before real customers can register.</div>
-          <p class="muted">Once registration is enabled, you will be able to sign up with your full name, date of birth, phone number, email and password.</p>
+          <p class="muted">Register for your RA Rideway account. When registrations open, we will send a verification email before you can sign in.</p>
+          <div class="notice" role="note">Account registration is not open to the public yet. Please do not submit personal information until RA Rideway has activated verification emails.</div>
+          <form id="registerForm">
+            <label for="regName">Full name</label><input id="regName" name="full_name" autocomplete="name" maxlength="120" required>
+            <label for="regDob">Date of birth</label><input id="regDob" name="dob" type="date" min="1900-01-01" required>
+            <label for="regPhone">Mobile number</label><input id="regPhone" name="phone" type="tel" autocomplete="tel" minlength="7" maxlength="25" required>
+            <label for="regEmail">Email address</label><input id="regEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+            <label for="regPassword">Create password (12 or more characters)</label><input id="regPassword" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+            <label style="font-weight:400"><input id="regPrivacy" type="checkbox" required style="display:inline;width:auto;min-height:auto;margin-right:8px">I have read the <a href="index.html#privacy-policy" target="_blank" rel="noopener">privacy policy</a>.</label>
+            <button class="primary" type="submit">Create account</button>
+          </form>
           <button class="secondary" type="button" id="backToLogin">Back to sign in</button>
         </section>
+        <div class="security" id="customerSecurity"><p class="hint">Security check for sign-in and registration.</p>
+          <div id="turnstile" class="cf-turnstile" data-sitekey="0x4AAAAAAF2eNOnnL9Je5jLB" data-theme="dark"></div>
+        </div>
       </div>
     </div>
 
@@ -83,6 +92,7 @@
   const $ = id => document.getElementById(id);
   const status = $('status');
   let busy = false;
+  $('regDob').max = new Date().toISOString().slice(0,10);
   const setNotice = (text, kind = '') => {
     status.textContent = text;
     status.className = 'notice ' + kind;
@@ -130,8 +140,30 @@
       if (e.status !== 401) setNotice('Account service is not ready yet. Please try later.', 'error');
     }
   };
-  $('showRegister').addEventListener('click', e => { e.preventDefault(); clearNotice(); $('loginPanel').classList.add('hidden'); $('registerPanel').classList.remove('hidden'); });
-  $('backToLogin').addEventListener('click', () => { clearNotice(); $('loginPanel').classList.remove('hidden'); $('registerPanel').classList.add('hidden'); });
+  $('showRegister').addEventListener('click', e => { e.preventDefault(); clearNotice(); $('loginPanel').classList.add('hidden'); $('registerPanel').classList.remove('hidden'); if (window.turnstile) window.turnstile.reset(); });
+  $('backToLogin').addEventListener('click', () => { clearNotice(); $('loginPanel').classList.remove('hidden'); $('registerPanel').classList.add('hidden'); if (window.turnstile) window.turnstile.reset(); });
+  $('registerForm').addEventListener('submit', async e => {
+    e.preventDefault(); if (busy) return;
+    const token = document.querySelector('input[name="cf-turnstile-response"]')?.value || '';
+    if (!token) return setNotice('Complete the security check first. If the widget says invalid sitekey, RA Rideway must fix its Cloudflare Turnstile configuration.', 'error');
+    const form = $('registerForm');
+    const password = $('regPassword').value;
+    if (password.length < 12) return setNotice('Use a password of at least 12 characters.', 'error');
+    if (new Date($('regDob').value + 'T00:00:00Z') >= new Date()) return setNotice('Please enter a valid date of birth.', 'error');
+    busy = true;
+    const button = form.querySelector('button[type=submit]'); button.disabled = true;
+    try {
+      const result = await request('/api/register', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ full_name: $('regName').value.trim(), dob: $('regDob').value,
+          phone: $('regPhone').value.trim(), email: $('regEmail').value.trim(),
+          password, turnstileToken: token }) });
+      form.reset();
+      $('registerPanel').classList.add('hidden');
+      $('loginPanel').classList.remove('hidden');
+      setNotice(result.message || 'Registration request received. Check your email to verify your account.', 'ok');
+    } catch(err) { setNotice(err.message || 'Registration is not available yet.', 'error'); }
+    finally { $('regPassword').value = ''; if (window.turnstile) window.turnstile.reset(); busy = false; button.disabled = false; }
+  });
   $('loginForm').addEventListener('submit', async e => {
     e.preventDefault(); if (busy) return;
     const token = document.querySelector('input[name="cf-turnstile-response"]')?.value || '';
