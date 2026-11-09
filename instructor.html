@@ -27,3 +27,51 @@
     <button type="submit" disabled>Applications opening soon</button>
   </form>
 </section>
+
+<script>
+document.getElementById("instructorApplication")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const button = form.querySelector('button[type="submit"]');
+    const token = form.querySelector(
+      '[name="cf-turnstile-response"]'
+    )?.value;
+
+    if (!token) {
+      alert("Please complete the security verification.");
+      return;
+    }
+
+    button.disabled = true;
+
+    try {
+      const data = Object.fromEntries(new FormData(form));
+      data.turnstileToken = token;
+
+      const response = await fetch("/api/instructor-register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Application failed.");
+      }
+
+      alert("Application submitted. Awaiting approval.");
+      form.reset();
+      if (window.turnstile) window.turnstile.reset();
+
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      // Keep registration closed until testing is complete.
+      button.disabled = true;
+    }
+  });
+</script>
+</body> 
